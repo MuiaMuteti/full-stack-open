@@ -31,8 +31,8 @@ The Fullstack Open course focuses on building scalable web applications with a m
 
 | Part | Topic                         | Status           |
 |------|-------------------------------|------------------|
-| 0    | Fundamentals of Web Apps      | 🚧 In Progress   |
-| 1    | Introduction to React         | ⏳ Not Started   |
+| 0    | Fundamentals of Web Apps      | ✅ Completed   |
+| 1    | Introduction to React         | ✅ Completed   |
 | 2    | Communicating with the Server | ⏳ Not Started   |
 | 3    | Programming a Server with Node.js | ⏳ Not Started |
 | 4    | Testing Express Applications  | ⏳ Not Started   |
