@@ -21,34 +21,14 @@
       "id": "4"
     },
     {
-      "id": "5",
-      "name": "Mike",
-      "number": "2345"
-    },
-    {
-      "id": "6",
-      "name": "mike",
-      "number": "90909"
-    },
-    {
-      "id": "7",
-      "name": "Adan",
-      "number": "237478"
-    },
-    {
-      "id": "8",
-      "name": "Liam",
-      "number": "13-34-2939"
-    },
-    {
-      "id": 9,
-      "name": "Olive",
-      "number": "90-9965"
-    },
-    {
       "id": "100b",
       "name": "Yuri",
       "number": "12-14-123456"
+    },
+    {
+      "id": "9cde",
+      "name": "Mike",
+      "number": "23-12-8383"
     }
   ]
 }
