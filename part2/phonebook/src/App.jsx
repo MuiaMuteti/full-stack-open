@@ -4,12 +4,14 @@ import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 import personService from './services/persons'
+import Notification from './components/Notification'
 
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
+  const [notification,  setNotification] = useState(null)
 
   useEffect(() => {
     console.log('effect')
@@ -40,6 +42,10 @@ const App = () => {
             persons.map(pers => pers.id === returnedPerson.id? returnedPerson : pers))
             setNewName('')
             setNewNumber('')
+            setNotification(`${returnedPerson.name}'s number updated`)
+            setTimeout(() => {
+              setNotification(null)
+            }, 5000)
         })
       }
     } else {
@@ -55,6 +61,10 @@ const App = () => {
           setPersons(persons.concat(returnedPerson))
           setNewName('')
           setNewNumber('')
+          setNotification(`Added ${returnedPerson.name}`)
+          setTimeout(() => {
+            setNotification(null)
+          }, 5000)
         })
     }    
   }
@@ -74,16 +84,16 @@ const App = () => {
     setFilter(event.target.value)
   }
 
-  const nameExists = (name) => {
-    return persons.some(pers => pers.name === name)
-  }
-
   const handleRemove = id => {
     const person = persons.find(pers => pers.id === id)
     if (window.confirm(`Delete ${person.name}?`)) {
       personService.remove(id).then(response => {
         console.log(response, 'deleted')
         setPersons(persons.filter(pers => pers.id !== id))
+        setNotification(`${response.name} was deleted`)
+        setTimeout(() => {
+          setNotification(null)
+        }, 5000)
       })
     }
   }
@@ -93,6 +103,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={notification} />
       <Filter 
         filter={filter} 
         handleFilterChange={handleFilterChange} />
