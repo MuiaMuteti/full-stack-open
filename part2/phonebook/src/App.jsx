@@ -42,10 +42,32 @@ const App = () => {
             persons.map(pers => pers.id === returnedPerson.id? returnedPerson : pers))
             setNewName('')
             setNewNumber('')
-            setNotification(`${returnedPerson.name}'s number updated`)
+            setNotification({
+              message: `${returnedPerson.name}'s number updated`,
+              type: 'success'
+            })
             setTimeout(() => {
               setNotification(null)
             }, 5000)
+        }).catch(error => {
+          if (error.response?.status === 404) {
+            setPersons(persons.filter(pers => pers.id !== existingPerson.id))
+            setNotification({
+              message: `Information of ${personObj.name} has already been removed from server`,
+              type: 'error'
+            })
+            setTimeout(() => {
+              setNotification(null)
+            }, 5000)
+          } else {
+            setNotification({
+              message: error.message,
+              type: 'error'
+            })
+            setTimeout(() => {
+              setNotification(null)
+            }, 5000)
+          }
         })
       }
     } else {
@@ -61,26 +83,37 @@ const App = () => {
           setPersons(persons.concat(returnedPerson))
           setNewName('')
           setNewNumber('')
-          setNotification(`Added ${returnedPerson.name}`)
+          setNotification({
+            message: `Added ${returnedPerson.name}`,
+            type: 'success'
+          })
           setTimeout(() => {
             setNotification(null)
           }, 5000)
+        }).catch(error => {
+          setNotification({
+            message: `${[error.message]}: Failed to add contact`,
+            type: 'error'
+          })
+          setTimeout(() => {
+          setNotification(null)
+        }, 5000)
         })
     }    
   }
 
   const handleNameChange = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     setNewName(event.target.value)
   }
 
   const handleNumberChange = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     setNewNumber(event.target.value)
   }
 
   const handleFilterChange = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     setFilter(event.target.value)
   }
 
@@ -88,9 +121,12 @@ const App = () => {
     const person = persons.find(pers => pers.id === id)
     if (window.confirm(`Delete ${person.name}?`)) {
       personService.remove(id).then(response => {
-        console.log(response, 'deleted')
+        // console.log(response, 'deleted')
         setPersons(persons.filter(pers => pers.id !== id))
-        setNotification(`${response.name} was deleted`)
+        setNotification({
+          message: `${response.name} was deleted`,
+          type: 'success'
+        })
         setTimeout(() => {
           setNotification(null)
         }, 5000)
@@ -103,7 +139,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={notification} />
+      <Notification notification={notification} />
       <Filter 
         filter={filter} 
         handleFilterChange={handleFilterChange} />
