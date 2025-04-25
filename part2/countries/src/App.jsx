@@ -24,6 +24,10 @@ const App = () => {
     setFilteredCountries(searchedCountries)
   }
 
+  const showCountry = (country) => {
+    setFilteredCountries([country])
+  }
+
   console.log('rendering')
 
   if (countries.length === 0) {
@@ -36,7 +40,9 @@ const App = () => {
         <CountryFilter 
           searchString={searchString} 
           handleSearchStringChange={handleSearchStringChange} />
-        <Countries countries={filteredCountries} />
+        <Countries
+          countries={filteredCountries}
+          showCountry={showCountry} />
       </div>
     )
   }
