@@ -124,7 +124,7 @@ const App = () => {
         // console.log(response, 'deleted')
         setPersons(persons.filter(pers => pers.id !== id))
         setNotification({
-          message: `${response.name} was deleted`,
+          message: `${person.name} was deleted`,
           type: 'success'
         })
         setTimeout(() => {
