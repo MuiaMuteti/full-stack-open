@@ -61,7 +61,7 @@ const App = () => {
             }, 5000)
           } else {
             setNotification({
-              message: error.message,
+              message: error.response?.data?.error || error.message,
               type: 'error'
             })
             setTimeout(() => {
@@ -91,8 +91,9 @@ const App = () => {
             setNotification(null)
           }, 5000)
         }).catch(error => {
+          console.log('error:', error)
           setNotification({
-            message: `${[error.message]}: Failed to add contact`,
+            message: error.response?.data?.error || `${[error.message]}: Failed to add contact`,
             type: 'error'
           })
           setTimeout(() => {
