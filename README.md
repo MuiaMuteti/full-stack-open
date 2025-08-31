@@ -34,9 +34,9 @@ The Fullstack Open course focuses on building scalable web applications with a m
 | 0    | Fundamentals of Web Apps      | ✅ Completed   |
 | 1    | Introduction to React         | ✅ Completed   |
 | 2    | Communicating with the Server | ✅ Completed   |
-| 3    | Programming a Server with Node.js | ⏳ Not Started |
-| 4    | Testing Express Applications  | ⏳ Not Started   |
-| 5    | React App Testing             | ⏳ Not Started   |
+| 3    | Programming a Server with Node.js | ✅ Completed |
+| 4    | Testing Express Applications  | ✅ Completed   |
+| 5    | React App Testing             | ⏳ In progress   |
 | 6    | Advanced state management   | ⏳ Not Started   |
 | 7    | React router, custom hooks    | ⏳ Not Started   |
 | 8    | GraphQL                       | ⏳ Not Started   |
